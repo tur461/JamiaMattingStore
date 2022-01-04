@@ -1,0 +1,22 @@
+.items_container {
+  padding: 0.4rem;
+  border: 1px solid #c2c2c2;
+}
+
+.item {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  box-shadow: 0px 0px 0.6rem 0px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.4rem;
+}
+
+.nav_form--index > label:first-child {
+  color: white;
+  margin-right: 0.4rem;
+}
+
+.search_by--selector {
+  margin-right: 0.4rem;
+}
