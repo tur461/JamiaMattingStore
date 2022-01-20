@@ -1,5 +1,4 @@
 const crypto        = require('crypto');
-const { nextTick } = require('process');
 const { store }     = require('./store');
 
 require('dotenv').config();
@@ -36,7 +35,7 @@ function verify_token(req, res, next) {
 
 const utils = {
     get_token,
-    verify_token
+    verify_token,
 }
 
 module.exports = {

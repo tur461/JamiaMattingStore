@@ -11,7 +11,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/edit.css" />
   </head>
   <body class="text-center">
     <div class="container">
@@ -23,7 +23,7 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/add.html">Add</a>
+              <a class="nav-link" href="/add.html">Add Bill</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" id="logout">Logout</a>
@@ -32,8 +32,127 @@
         </div>
       </nav>
 
-      <div><h2>Edit the Item</h2></div>
-      <div class="add_item--container"></div>
+      <div>
+        <h2>Edit Bill Page</h2>
+        <div class="err_div">
+          <ul id="error_list" class="d-none text-left"></ul>
+        </div>
+      </div>
+      <div class="add_bill--container">
+        <div class="bill_section_1">
+          <div>
+            <label class="d-block" for="bill_number">Bill Number</label>
+            <input
+              class="d-block"
+              type="text"
+              id="bill_number"
+              name="bill_number"
+            />
+          </div>
+
+          <div>
+            <label class="d-block" for="name">Name</label>
+            <input class="d-block" type="text" id="name" name="name" />
+          </div>
+
+          <div>
+            <label class="d-block" for="phone">Phone</label>
+            <input class="d-block" type="text" id="phone" name="phone" />
+          </div>
+
+          <div>
+            <label class="d-block" for="address">Address</label>
+            <input class="d-block" type="text" id="address" name="address" />
+          </div>
+
+          <div>
+            <label class="d-block" for="dated">Dated</label>
+            <input class="d-block" type="date" id="dated" name="dated" />
+          </div>
+        </div>
+        <div class="bill_section_2" id="bill_section_2">
+          <div id="item-rows_container">
+            <div class="item-row" id="item-row_1">
+              <div>
+                <label class="d-block" for="desc_1">Description</label>
+                <input
+                  class="d-block"
+                  type="text"
+                  name="desc_1"
+                  id="desc_1"
+                  class="desc"
+                />
+              </div>
+              <div>
+                <label class="d-block" for="qty_1">Quantity</label>
+                <input
+                  class="d-block"
+                  type="number"
+                  name="qty_1"
+                  id="qty_1"
+                  class="qty"
+                />
+              </div>
+              <div>
+                <label class="d-block" for="rate_1">Rate</label>
+                <input
+                  class="d-block"
+                  type="number"
+                  name="rate_1"
+                  id="rate_1"
+                  class="rate"
+                />
+              </div>
+              <div>
+                <label class="d-block" for="amount_1">Amount</label>
+                <input
+                  class="d-block"
+                  type="number"
+                  name="amount_1"
+                  id="amount_1"
+                  class="amount"
+                  disabled
+                />
+              </div>
+              <div>
+                <button class="btn btn-danger remove_item" disabled>
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button class="btn btn-success" id="add_row-item">
+              Add One More
+            </button>
+          </div>
+        </div>
+        <div class="bill_section_3">
+          <div>
+            <label class="d-block" for="debit">Debit</label>
+            <input class="d-block" type="number" id="debit" name="debit" />
+          </div>
+          <div>
+            <label class="d-block" for="credit">Credit</label>
+            <input class="d-block" type="number" id="credit" name="credit" />
+          </div>
+          <div>
+            <label class="d-block" for="gross_total">Gross Total</label>
+            <input
+              class="d-block"
+              type="number"
+              id="gross_total"
+              name="gross_total"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="bill_section_4">
+          <button class="btn btn-success" id="upload_bill">Upload</button>
+          <button class="btn btn-danger" id="cancel_edit">Cancel Edit</button>
+        </div>
+      </div>
     </div>
     <script
       src="./scripts/jquery-3.6.0.min.js"
@@ -41,6 +160,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./scripts/common.js"></script>
+    <script src="./scripts/add_edit_common.js"></script>
     <script src="./scripts/edit.js"></script>
   </body>
 </html>

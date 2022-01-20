@@ -5,7 +5,9 @@ let pass = document.getElementById("pass_code");
 submit.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!mail.value || !pass.value) {
+    let mail_id = mail.value;
+    let pass_code = pass.value;
+    if (!mail_id || !pass_code) {
         alert("Please fill in all details");
         return;
     }
@@ -15,15 +17,13 @@ submit.addEventListener("click", (e) => {
         headers: {
         "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-        mail_id: mail.value,
-        pass_code: pass.value,
-        }),
+        body: JSON.stringify({ mail_id, pass_code }),
     })
     .then((res) => res.json())
     .then((data) => {
         console.log(data);
         localStorage.setItem("token", data.token);
+        localStorage.setItem('mail_id', mail_id);
         window.location.href = '/index.html';
     })
     .catch((err) => console.log(err));

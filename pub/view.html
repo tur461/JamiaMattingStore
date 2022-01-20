@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta "viewport" content="width=device-width, initial-scale=1.0" />
     <title>JMS</title>
     <link
       rel="stylesheet"
@@ -23,10 +23,10 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/add.html">Add</a>
+              <a class="nav-link" href="/add.html">Add Bill</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/edit.html">Edit</a>
+              <a class="nav-link" href="/edit.html">Edit Bill</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" id="logout">Logout</a>
@@ -35,14 +35,67 @@
         </div>
       </nav>
 
-      <div><h2>View Item Details</h2></div>
-      <div class="add_item--container"></div>
+      <div>
+          <h2>View Bill Page</h2>
+    	</div>
+      <div class="add_bill--container">
+        <div class="bill_section_1">
+          <div>
+            <span class="d-block">Bill Number</span>
+            <span class="d-block" id="bill_number"></span>
+          </div>
+          <div>
+            <span class="d-block">Name</span>
+            <span class="d-block" id="name"></span>
+          </div>
+          <div>
+            <span class="d-block">Phone</span>
+            <span class="d-block" id="phone"></span>
+          </div>
+          <div>
+            <span class="d-block">Dated</span>
+            <span class="d-block" id="dated"></span>
+          </div>
+        </div>
+        <div class="bill_section_2" id="bill_section_2">
+          <div id="item-rows_container">
+            <div class="item-row" id="default-item-row">
+              <div>
+                <span class="d-block">Description</span>
+                <span class="d-block item" id="item_1"></span>
+              </div>
+              <div>
+                <span class="d-block">Quantity</span>
+                <span class="d-block qty" id="qty_1"></span>
+              </div>
+              <div>
+                <span class="d-block">Rate</span>
+                <span class="d-block rate" id="rate_1"></span>
+              </div>
+              <div>
+                <span class="d-block">Amount</span>
+                <span class="d-block total" id="total_1"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bill_section_3">
+          <div>
+            <span class="d-block">Debit</span>
+            <span class="d-block"  id="debit"></span>
+          </div>
+          <div>
+            <span class="d-block">Credit</span>
+            <span class="d-block"  id="credit" ></span>
+          </div>
+          <div>
+            <span class="d-block" for="gross_total">Gross Total</span>
+            <span class="d-block" id="gross_total"></spaan>
+          </div>
+        </div>
+      </div>
     </div>
-    <script
-      src="./scripts/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+    <script src="./scripts/jquery-3.6.0.min.js"></script>
     <script src="./scripts/common.js"></script>
     <script src="./scripts/view.js"></script>
   </body>
