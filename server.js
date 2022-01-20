@@ -114,5 +114,11 @@ router.post('/api/auth_user', (req, res) => {
 
 app.use('/', router);
 
-app.listen(port);
-console.log('listening on port: ' + port);
+function start_server() {
+    app.listen(port);
+    console.log('listening on port: ' + port);
+}
+
+module.exports = {
+    start_server,
+}
