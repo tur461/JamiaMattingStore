@@ -40,9 +40,10 @@ $(document).ready(function(){
             $(location).attr('href','/edit.html');
         };
         let bill_onclick = e => {
-            e.preventDefault();
-            e.stopPropagation();
-            localStorage.setItem('selected_bill_id', $(e.target).data('bid'));
+            handle_e(e);
+            let t = $(e.target);
+            let bill_id = t.is('div') ? t.data('bid') : t.parent().data('bid');
+            localStorage.setItem('selected_bill_id', bill_id);
             $(location).attr('href','/view.html');
         };
 
@@ -57,6 +58,7 @@ $(document).ready(function(){
             btn.on('click', btn_onclick);
             btn.data('bid', bill.bill_id);
             div.append(btn)            
+            div.data('bid', bill.bill_id);
             bills_container.append(div);
         });
     }

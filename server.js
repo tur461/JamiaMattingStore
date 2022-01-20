@@ -119,6 +119,8 @@ function start_server() {
     console.log('listening on port: ' + port);
 }
 
+start_server();
+
 module.exports = {
     start_server,
 }

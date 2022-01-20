@@ -23,7 +23,7 @@
         e.stopPropagation();
     }
 
-    function format_date(timestamp) {
+    function _format_date(timestamp, whr) {
         let dt = new Date(timestamp),
             m = `${dt.getMonth() + 1}`,
             d = `${dt.getDate()}`,
@@ -31,8 +31,16 @@
          
             m = m.length < 2 ? '0' + m : m;
             d = d.length < 2 ? '0' + d : d;
-    
+        if(whr === 'local') return `${d}-${m}-${y}`
         return `${y}-${m}-${d}`;
+    }
+
+    function format_date(timestamp) {
+        return _format_date(timestamp, 'foriegn');
+    }
+
+    function format_date_local(timestamp) {
+        return _format_date(timestamp, 'local');
     }
 
 

@@ -1,6 +1,6 @@
 const { start_server } = require('./server');
 const cluster = require('cluster');
-const num_of_cores = require('os').cpus().length;
+let num_of_cores = require('os').cpus().length;
 
 if(cluster.isMaster) {
     console.log('# of cores: ' + num_of_cores);

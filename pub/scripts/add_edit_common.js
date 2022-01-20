@@ -15,7 +15,7 @@ $(document).ready(function() {
     })    
 });
 
-const PAGE = { EDIT: 1, ADD: 2 };
+const PAGE = { EDIT: 1, ADD: 2, VIEW: 3, };
 let row_ctr = 1;
 let removed = [];
 let rem_item_ids = [];
