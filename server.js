@@ -92,7 +92,7 @@ router.post('/api/update_bill_by_id', utils.verify_token, (req, res) => {
             error: 'something went wrong. plz try again!',
         });
     })
-})
+});
 
 router.post('/api/auth_user', (req, res) => {
     let user = req.body;

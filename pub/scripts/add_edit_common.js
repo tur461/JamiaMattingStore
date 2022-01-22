@@ -21,6 +21,8 @@ let removed = [];
 let rem_item_ids = [];
 let err = { ids: []};
 let page = -1;
+let original_font_size = 0.0;
+let print_font_inc = 0.25;
 
 function reset_vars(pg) {
     row_ctr = 1;

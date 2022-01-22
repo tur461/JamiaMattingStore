@@ -3,14 +3,14 @@
   border: 1px solid #c2c2c2;
 }
 
-.print--area {
+.print_and_pdf--area {
   border-radius: 0.2rem;
   border: 1px solid #000;
   margin-bottom: 1rem;
   padding: 0.4rem;
 }
-.bill--container .print--area > div,
-.bill--container .print--area > table {
+.bill--container .print_and_pdf--area > div,
+.bill--container .print_and_pdf--area > table {
   width: 100%;
 }
 
@@ -30,4 +30,12 @@
   padding: 0.4rem;
   box-shadow: 0px 0px 0.2rem 0px rgba(0, 0, 0, 0.3);
   border: 1px solid #c2c2c2;
+}
+
+.no-print--style {
+  display: none;
+}
+
+.no--border {
+  border: none;
 }

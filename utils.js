@@ -4,6 +4,7 @@ const { store }     = require('./store');
 require('dotenv').config();
 
 let salt = process.env.SALT;
+let client_url = process.env.CLIENT_URL;
 
 function get_token(user) {
     // previous token expires on new login!!
@@ -12,9 +13,8 @@ function get_token(user) {
 }
 
 function verify_token(req, res, next) {
-    const bearer_header = req.headers['authorization'];
-    if(typeof bearer_header !== 'undefined') {
-        let token =  bearer_header.split(' ')[1];
+    const token = get_token_from_request(req);
+    if(token) {
         store.is_token_valid(token).then(dat => {
             if(dat.is_valid) next(); // token is valid!
             else {
@@ -33,9 +33,14 @@ function verify_token(req, res, next) {
     }
 }
 
+function get_token_from_request(req) {
+    return req.headers['authorization'] ? req.headers['authorization'].split(' ')[1] : null;
+}
+
 const utils = {
     get_token,
     verify_token,
+    get_token_from_request,
 }
 
 module.exports = {

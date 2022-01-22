@@ -20,15 +20,10 @@ $(document).ready(_ => {
     });
 
     $('#print_bill').on('click', e => {
+        handle_e(e);
         console.log('trying printing the bill...');
-        //try_uploading('update_bill_by_id', {removed_item_ids: rem_item_ids}); 
+        print_the_bill();
     });
-    
-    $('#download_pdf').on('click', e => {
-        console.log('downloading pdf of the bill...');
-        //try_uploading('update_bill_by_id', {removed_item_ids: rem_item_ids}); 
-    });
-
 });
 
 function get_row_item(item, i) {
@@ -81,4 +76,32 @@ function populate(bill) {
     $('#dated').html(format_date_local(bill.dated));
     let container = $('#bill_items_container');
     bill.items.forEach((item, i) => container.prepend(get_row_item(item, i+1)));
+}
+
+function get_print_font() {
+    original_font_size = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
+    return {
+        size: original_font_size + (original_font_size * print_font_inc),
+        family: '',
+    }
+}
+
+function set_print_format() {
+    let font = get_print_font();
+    
+    $('html').css('font-size', `${font.size}px`);
+    $('.no-print--content').each((_, elm) => $(elm).addClass('no-print--style'));
+    $('.no-print--border').each((_, elm) => $(elm).addClass('no--border'));
+}
+
+function reset_print_format() {
+    $('html').css('font-size', `${original_font_size}px`);
+    $('.no-print--content').each((_, elm) => $(elm).removeClass('no-print--style'));
+    $('.no-print--border').each((_, elm) => $(elm).removeClass('no--border'));
+}
+
+function print_the_bill() { 
+    set_print_format();
+    window.print();
+    reset_print_format()
 }
