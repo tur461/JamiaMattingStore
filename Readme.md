@@ -1,5 +1,5 @@
-In Progress...
-print and download pdf functionalities pending...!
+thank you for considering.
+expecting issues...(kindly submit if any)
 
 Usage:
 
@@ -24,3 +24,5 @@ Note: incase of CORS issue, add the live-server url in server.js under app.use(c
 ]}))
 find it at the top of server.js file.
 Remember, http://localhost:1234 and http://127.0.0.1:1234 are considered different in cors issue.
+
+Lincense: MIT Open source Lincense
