@@ -50,7 +50,7 @@
         let final = amount.slice(len-3);
         let i = len-3;
         for(; i>1; i-=2) final = `${amount.slice(i-2, i)},${final}`;
-        return `${amount.slice(0, i)},${final}`;
+        return i ? `${amount.slice(0, i)},${final}` : final;
     }
 
 
