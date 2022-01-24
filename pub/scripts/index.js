@@ -10,7 +10,7 @@ $(document).ready(function(){
     do_fetch({api_suffix: 'bills', data: {}});
         
     function do_fetch(opts) {
-        console.log(opts);
+        // console.log(opts);
         $.ajax({ 
             type: 'GET', 
             url: `${get_api_base()}/${opts.api_suffix}`, 
@@ -75,7 +75,7 @@ $(document).ready(function(){
 
     function proceed_for_search(text) {
         if(text.length >= window._threshold) {
-            console.log('searching: ' + text);
+            //console.log('searching: ' + text);
             let opts = {api_suffix: 'bills_by_name', data: {}};
             if(window._search_by == 1) {
                 opts.data['name'] = text;
@@ -90,7 +90,7 @@ $(document).ready(function(){
 
     $('#search_box').on('keyup', e => {
         if(window._timer){
-            console.log('clearing timeout: ' + window._timer);
+            //console.log('clearing timeout: ' + window._timer);
             clearTimeout(window._timer);
         }
         let text = $('#search_box').val();

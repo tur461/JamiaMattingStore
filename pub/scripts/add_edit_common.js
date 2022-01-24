@@ -87,7 +87,7 @@ function remove_item(e) {
     if(is_edit_page()) rem_item_ids.push(get_item_id(i));
 
     $(`#item-row_${i}`).remove();
-    console.log('item_ids removed:', rem_item_ids)
+    //console.log('item_ids removed:', rem_item_ids);
     change_gross_total();
 }
 
@@ -112,7 +112,7 @@ function change_debit(e) {
 
 function change_amount(e) {
     handle_e(e);
-    console.log('change amount')
+    //console.log('change amount');
     let num = $(e.target).attr('id').split('_')[1];
     let qty = +$(`#qty_${num}`).val() || 0;
     let rate = +$(`#rate_${num}`).val() || 0;
@@ -271,7 +271,8 @@ function try_uploading(api_fix, xtra_data) {
         success: data => {
             console.log('success');
             if(!data.error){
-                console.log('data received', data);
+                alert(data.message);
+                console.log('data received');
             } else {
                 console.log('error:', data.error)
             }

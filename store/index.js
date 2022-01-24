@@ -56,7 +56,7 @@ function _insert_bill_items(items, b_id, resolve, reject) {
     
     let q = `INSERT INTO Bill_Item(${ic.join(',')}) VALUES ${items.map(item => `(${ic.map(c => `'${item[c]}'`).join(',')})`).join(',')}`
         
-    console.log('multiple insert query:', q);
+    //console.log('multiple insert query:', q);
     
     db.run(q, [], function(err) {
         if (err) {
@@ -77,7 +77,7 @@ function _add_bill(bill, resolve, reject) {
     d = bill_cols.map(c => bill[c]);
     q = `INSERT INTO bill(${bill_cols.join(',')}) VALUES(${bill_cols.map(bc => `'${bill[bc]}'`).join(',')})`;
     
-    console.log('insert query:', q);
+    //console.log('insert query:', q);
 
 	db.run(q, [], function(err) {
 		if (err) {
@@ -107,7 +107,7 @@ function _update_bill(bill, resolve, reject) {
 	
     let q = `UPDATE Bill SET ${bill_cols.map(b => `${b}='${bill[b]}'`).join(',')} WHERE bill_id=${bill.bill_id}`;
     let bill_id = bill.bill_id;
-    console.log('update data:', bill);
+    //console.log('update data:');
     
 	db.run(q, [], function(err) {
 		if (err) {
@@ -302,7 +302,8 @@ function _update_user(data, mail, resolve, reject) {
             msg: err.message
         });
       }
-      console.log(`Row(s) updated: ${this.changes}`);
+    //   console.log(`Row(s) updated: ${this.changes}`);
+      console.log(`Row(s) updated successfully!`);
       resolve();
     });
 }

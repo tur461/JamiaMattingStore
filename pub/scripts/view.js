@@ -10,7 +10,7 @@ $(document).ready(_ => {
         success: data => {
             console.log('success');
             if(!data.error){
-                console.log('data received', data);
+                console.log('data received');
                 populate(data.bill);
             } else {
                 console.log('error:', data.error)

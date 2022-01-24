@@ -77,7 +77,7 @@ router.get('/api/bill_by_id', utils.verify_token, (req, res) => {
 })
 
 router.post('/api/add_bill', utils.verify_token, (req, res) => {
-    console.log('post request insert')
+    // console.log('post request insert')
     store.add_bill(req.body).then(d => res.json({
         error: '', message: 'added successfully!', bill_id: d.bill_id,
     }))
@@ -90,7 +90,7 @@ router.post('/api/add_bill', utils.verify_token, (req, res) => {
 })
 
 router.post('/api/update_bill_by_id', utils.verify_token, (req, res) => {
-    console.log('post request update')
+    // console.log('post request update')
     store.update_bill(req.body).then(d => res.json({
         error: '', message: 'updated successfully!', bill_id: d.bill_id,
     }))
@@ -104,9 +104,9 @@ router.post('/api/update_bill_by_id', utils.verify_token, (req, res) => {
 
 router.post('/api/auth_user', (req, res) => {
     let user = req.body;
-    console.log('auth_user data:', user);
+    // console.log('auth_user data:', user);
     store.is_user_valid(user).then(dat => {
-        console.log('is user valid:', dat.is_valid);
+        // console.log('is user valid:', dat.is_valid);
         if(dat.is_valid) {
             let d = {token: utils.get_token(user)};
             store.update_user(d, user.mail_id).then(d => console.log('updated user!'))

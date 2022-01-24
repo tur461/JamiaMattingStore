@@ -21,7 +21,7 @@ submit.addEventListener("click", (e) => {
     })
     .then((res) => res.json())
     .then((data) => {
-        console.log(data);
+        //console.log(data);
         localStorage.setItem("token", data.token);
         localStorage.setItem('mail_id', mail_id);
         window.location.href = '/index.html';
