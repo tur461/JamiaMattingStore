@@ -6,9 +6,10 @@ $(document).ready(function(){
     window._timing = 300; // ms
     window._timer = null;
     
-    fetch_bills({api_suffix: 'bills', data: {}});
+    do_fetch({api_suffix: 'bills_agregate', data: {}});
+    do_fetch({api_suffix: 'bills', data: {}});
         
-    function fetch_bills(opts) {
+    function do_fetch(opts) {
         console.log(opts);
         $.ajax({ 
             type: 'GET', 
@@ -19,7 +20,12 @@ $(document).ready(function(){
             dataType: 'json',
             success: data => {
                 if(!data.error){
-                    console.log('data received:', data.bills.length)
+                    console.log('data receive success!');
+                    if(opts.api_suffix == 'bills_agregate') {
+                        $('#total-debit').text(format_amount(data.total_debit));
+                        $('#total-credit').text(format_amount(data.total_credit));
+                        return;
+                    }
                     window._bills = data.bills;
                     if(opts.api_suffix == 'bills') window._old_data = data.bills;
                     insert_bills(data.bills);
@@ -73,11 +79,11 @@ $(document).ready(function(){
             let opts = {api_suffix: 'bills_by_name', data: {}};
             if(window._search_by == 1) {
                 opts.data['name'] = text;
-                fetch_bills(opts);
+                do_fetch(opts);
             } else {
                 opts.api_suffix = 'bills_by_bill_number';
                 opts.data['bill_number'] = text;
-                fetch_bills(opts);
+                do_fetch(opts);
             } 
         }
     }

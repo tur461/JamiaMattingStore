@@ -31,6 +31,14 @@ router.get('/api/bills', utils.verify_token, (req, res) => {
     })
 })
 
+router.get('/api/bills_agregate', utils.verify_token, (req, res) => {
+    store.get_bills_aggregate().then(data => res.json(data))
+    .catch(er => {
+        console.log('error fetching bills aggregate from db!:', er);
+        res.json(er);
+    })
+})
+
 router.get('/api/bills_by_name', utils.verify_token, (req, res) => {
     // console.log('searching by name: ', req.query);
     store.get_bills_by_name(req.query.name).then(data => res.json({

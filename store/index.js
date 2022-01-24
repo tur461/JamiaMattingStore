@@ -190,6 +190,32 @@ function _get_bills(resolve, reject) {
       });
 }
 
+function _get_bills_aggregate(resolve, reject) {
+    let q = `SELECT balance, advance FROM bill where NOT deleted`;
+    db.all(q, [], function(err, rows) {
+        if (err) {
+            console.log('error querying an bill:', err);
+            return reject({
+                error: !0,
+                message: err.message
+            });
+        }
+        console.log(`Successfully fetched bills. count:` + rows.length);
+        let data = {
+            total_credit: 0.0,
+            total_debit: 0.0,
+        };
+        rows.forEach(row => {
+            data.total_credit += row.advance;
+            data.total_debit += row.balance;
+        });
+        resolve({
+            error: !1,
+            ...data,
+        });
+      });
+}
+
 function _get_bills_by_name(name, resolve, reject) {
     let q = `SELECT * FROM bill WHERE name like '%${name}%' AND NOT deleted ORDER BY bill_number`;
     db.all(q, [], function(err, rows) {
@@ -286,6 +312,7 @@ const store = {
     update_bill: d => new Promise((r, j) => _update_bill(d, r, j)),
     get_bill_by_id: b_id => new Promise((r, j) => _get_bill_by_id(b_id, r, j)),
     get_bills: _ => new Promise((r, j) => _get_bills(r, j)),
+    get_bills_aggregate: _ => new Promise((r, j) => _get_bills_aggregate(r, j)),
     get_bills_by_name: n => new Promise((r, j) => _get_bills_by_name(n, r, j)),
     get_bills_by_bill_number: bn => new Promise((r, j) => _get_bills_by_bill_number(bn, r, j)),
     is_user_valid: u => new Promise((r, j) => _is_user_valid(u, r, j)),

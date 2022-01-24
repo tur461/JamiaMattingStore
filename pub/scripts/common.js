@@ -43,6 +43,16 @@
         return _format_date(timestamp, 'local');
     }
 
+    function format_amount(amount) {
+        amount = ''+amount;
+        let len = amount.length;
+        if(len <= 3) return amount;
+        let final = amount.slice(len-3);
+        let i = len-3;
+        for(; i>1; i-=2) final = `${amount.slice(i-2, i)},${final}`;
+        return `${amount.slice(0, i)},${final}`;
+    }
+
 
     let validate = (function(){
         let mail = m => {
